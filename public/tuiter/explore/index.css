@@ -56,18 +56,23 @@ table {
     right: 30px;
   }
 
-.wd-tabs {
+  .wd-tabs {
     list-style: none;
     padding: 0;
-    margin-bottom: 20px;
     display: flex;
     border-bottom: 1px solid #ddd;
+    justify-content: space-between; 
+    margin-bottom: 0px;
 }
 
 .wd-tabs li {
     padding: 10px 20px;
     cursor: pointer;
+    flex-grow: 1; 
+    text-align: center; 
 }
+
+
 
 .wd-tab-selected {
     border-bottom: 3px solid blue;
