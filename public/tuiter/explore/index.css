@@ -77,6 +77,13 @@ table {
     position: relative;
     margin-bottom: 20px;
 }
+.wd-image-container-2 {
+    position: relative;
+}
+.wd-image-container-2 img {
+    width: 100%;
+    height: 500px;
+}
 
 .wd-image-container img {
     width: 100%;
@@ -130,3 +137,124 @@ table {
 }
 
 
+.wd-list-group { 
+    list-style: none; 
+    padding-bottom: 4; 
+
+}
+
+  /* .list-group {
+    padding-bottom: 5px;
+  } */
+
+  .wd-blue-check {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+
+.wd-tuit-author {
+    font-weight: bold;
+}
+
+.wd-tuit-handle {
+    color: gray;
+font-size: medium;
+}
+.wd-tuit-date {
+    color: gray;
+    font-size: medium;
+}
+
+.wd-tuit-header {
+  width: calc(100% - 48px);
+  /* text-align: left; */
+  display: flex-column;
+  padding-bottom: 20px;
+  padding-left: 5px;
+}
+
+.wd-tuit-header-description-blue {
+    color: blue;
+  }
+
+  .wd-tuit-image {
+    width: 60px;
+    height: 60px;
+    /* max-width: 100%;
+    max-height: 100%; */
+  }
+
+  /* .col-2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  } */
+
+/* Make image circular */
+.rounded-circle {
+    border-radius: 50%;
+  }
+  
+  .wd-profile-pic {
+    width: 48px;
+    height: 48px;
+  }
+  
+  /* Style follow button */  
+  .btn-primary {
+    background-color: #1da1f2;
+    border-color: #1da1f2;
+    width: 100%;
+  }
+  
+  .btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: .875rem;
+    line-height: 1.5;
+    border-radius: 0.2rem; 
+  } 
+  
+  .rounded-pill {
+    border-radius: 50rem;
+  }
+  
+  .col-2 {
+    display: flex;
+    align-items: top;
+  }
+  .list-group {
+    padding-bottom: 5px;
+  }
+
+
+  .search-container {
+    position: relative;
+    width: 100%;
+}
+
+.input-group {
+    border: 1px solid #ccc;
+    background-color: #fff;
+}
+
+.input-group-prepend {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gear-icon {
+    align-self: center;
+    padding-left: 10px;
+}
+
+.btn-follow {
+    width: 60px;  /* Or whatever width you prefer */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+
+  
