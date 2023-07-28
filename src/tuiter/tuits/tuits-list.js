@@ -1,17 +1,17 @@
 import React from "react";
-// import tuitsArray from "./tuits.json";
-import TuitSummaryItem from "./tuit-summary-item";
 import { useSelector } from "react-redux";
+import TuitItem from "./tuit-item";
 
-const TuitSummaryList = () => {
+const TuitsList = () => {
   const { tuits } = useSelector((state) => state.tuits);
 
   return (
     <ul className="list-group">
       {tuits.map((tuit) => (
-        <TuitSummaryItem key={tuit._id} tuit={tuit} />
+        <TuitItem key={tuit._id} tuit={tuit} />
       ))}
     </ul>
   );
 };
-export default TuitSummaryList;
+
+export default TuitsList;
