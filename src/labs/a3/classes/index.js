@@ -1,0 +1,21 @@
+import "./index.css";
+import DynamicStyling from "./DynamicStyling";
+
+function Classes() {
+  const color = "blue";
+  const dangerous = true;
+
+  return (
+    <div>
+      <h2>Classes</h2>
+      <div
+        className={`${dangerous ? "wd-bg-red" : "wd-bg-green"}
+                                   wd-fg-black wd-padding-10px`}
+      >
+        Dangerous background
+      </div>
+      <DynamicStyling />
+    </div>
+  );
+}
+export default Classes;
