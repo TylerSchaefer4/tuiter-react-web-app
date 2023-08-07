@@ -7,15 +7,18 @@ import {
   FaThumbsDown,
 } from "react-icons/fa";
 import { updateTuitThunk } from "../services/tuits-thunks";
+import { useDispatch } from "react-redux";
 
-const TuitStats = ({ stats, handleLike }) => {
+const TuitStats = ({ tuit, handleLike }) => {
+  const dispatch = useDispatch();
+
   return (
     <div className="wd-tuit-stats">
       <div className="wd-tuit-stat">
-        <FaComment /> {stats.replies}
+        <FaComment /> {tuit.replies}
       </div>
       <div className="wd-tuit-stat">
-        <FaRetweet /> {stats.retuits}
+        <FaRetweet /> {tuit.retuits}
       </div>
       <div className="wd-tuit-stat">
         <FaHeart
@@ -36,7 +39,7 @@ const TuitStats = ({ stats, handleLike }) => {
         <span className="ms-2">{tuit.dislikes}</span>
       </div>
       <div className="wd-tuit-stat">
-        <FaShareSquare /> {stats.shares}
+        <FaShareSquare /> {tuit.shares}
       </div>
     </div>
   );
