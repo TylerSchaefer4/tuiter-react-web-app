@@ -1,5 +1,12 @@
 import React from "react";
-import { FaComment, FaRetweet, FaHeart, FaShareSquare } from "react-icons/fa";
+import {
+  FaComment,
+  FaRetweet,
+  FaHeart,
+  FaShareSquare,
+  FaThumbsDown,
+} from "react-icons/fa";
+import { updateTuitThunk } from "../services/tuits-thunks";
 
 const TuitStats = ({ stats, handleLike }) => {
   return (
@@ -10,8 +17,23 @@ const TuitStats = ({ stats, handleLike }) => {
       <div className="wd-tuit-stat">
         <FaRetweet /> {stats.retuits}
       </div>
-      <div className="wd-tuit-stat" onClick={handleLike}>
-        <FaHeart color={stats.liked ? "red" : "black"} /> {stats.likes}
+      <div className="wd-tuit-stat">
+        <FaHeart
+          className="text-danger"
+          onClick={() =>
+            dispatch(updateTuitThunk({ ...tuit, likes: tuit.likes + 1 }))
+          }
+        />
+        <span className="ms-2">{tuit.likes}</span>
+      </div>
+      <div className="wd-tuit-stat">
+        <FaThumbsDown
+          className="text-danger"
+          onClick={() =>
+            dispatch(updateTuitThunk({ ...tuit, dislikes: tuit.dislikes + 1 }))
+          }
+        />
+        <span className="ms-2">{tuit.dislikes}</span>
       </div>
       <div className="wd-tuit-stat">
         <FaShareSquare /> {stats.shares}

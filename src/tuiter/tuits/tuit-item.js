@@ -4,7 +4,7 @@ import { FaEllipsisH } from "react-icons/fa";
 import blueCheck from "./blueCheck.png";
 import "./index.css";
 import { useDispatch } from "react-redux";
-import { deleteTuit } from "./hmm";
+import { deleteTuitThunk } from "../services/tuits-thunks";
 
 const TuitItem = ({
   tuit = {
@@ -20,7 +20,7 @@ const TuitItem = ({
   const [likes, setLikes] = useState(tuit.likes);
   const dispatch = useDispatch();
   const deleteTuitHandler = (id) => {
-    dispatch(deleteTuit(id));
+    dispatch(deleteTuitThunk(id));
   };
 
   const handleLike = () => {

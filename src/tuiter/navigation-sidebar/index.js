@@ -1,6 +1,8 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useSelector } from "react-redux";
+
 import {
   faHome,
   faCompass,
@@ -12,6 +14,8 @@ import {
   faEllipsisH,
 } from "@fortawesome/free-solid-svg-icons";
 const NavigationSidebar = () => {
+  const { currentUser } = useSelector((state) => state.user);
+
   const { pathname } = useLocation();
   const [ignore, tuiter, active] = pathname.split("/");
   const links = [
@@ -38,6 +42,23 @@ const NavigationSidebar = () => {
           {/* {link.name} */}
         </Link>
       ))}
+      {!currentUser && (
+        <Link className="list-group" to="/tuiter/login">
+          {" "}
+          Login{" "}
+        </Link>
+      )}
+      {!currentUser && (
+        <Link className="list-group" to="/tuiter/register">
+          Register
+        </Link>
+      )}
+      {currentUser && (
+        <Link className="list-group" to="/tuiter/profile">
+          {" "}
+          Profile{" "}
+        </Link>
+      )}
     </div>
   );
 };

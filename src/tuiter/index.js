@@ -12,8 +12,13 @@ import whoReducer from "./reducers/who-reducer";
 import tuitsReducer from "./reducers/tuits-reducer";
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
+import ProfileScreen from "./user/profile-screen";
+import LoginScreen from "./user/login-screen";
+import RegisterScreen from "./user/register"; //dont have a screen yet
+import authReducer from "./reducers/auth-reducer";
 const store = configureStore({
   reducer: { who: whoReducer, tuits: tuitsReducer },
+  user: authReducer,
 });
 
 function Tuiter() {
@@ -30,6 +35,9 @@ function Tuiter() {
               <Route path="/home" element={<HomeScreen />} />
               <Route path="/explore" element={<ExploreScreen />} />
               <Route path="/bookmarks" element={<BookmarksScreen />} />
+              <Route path="/profile" element={<ProfileScreen />} />
+              <Route path="/login" element={<LoginScreen />} />
+              <Route path="/register" element={<RegisterScreen />} />
               <Route path="/profile" element={<ProfileScreen />} />
             </Routes>
           </div>
