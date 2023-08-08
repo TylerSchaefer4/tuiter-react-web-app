@@ -11,7 +11,7 @@ import { useDispatch } from "react-redux";
 
 const TuitStats = ({ tuit, handleLike }) => {
   const dispatch = useDispatch();
-  const replies = tuit.replies || 0;
+  console.log("Tuit: ", tuit);
 
   return (
     <div className="wd-tuit-stats">
