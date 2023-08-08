@@ -6,6 +6,8 @@ import {
   logoutThunk,
   updateUserThunk,
 } from "../services/auth-thunks";
+import { findTuitsThunk } from "../services/tuits-thunks";
+
 function ProfileScreen() {
   const { currentUser } = useSelector((state) => state.user);
   const [profile, setProfile] = useState(currentUser);
@@ -15,13 +17,17 @@ function ProfileScreen() {
     await dispatch(updateUserThunk(profile));
   };
   useEffect(() => {
+    dispatch(findTuitsThunk());
+
     const loadProfile = async () => {
       const { payload } = await dispatch(profileThunk());
       setProfile(payload);
     };
 
-    loadProfile();
-  }, [dispatch]);
+    if (!profile) {
+      loadProfile();
+    }
+  }, []);
   return (
     <div>
       <h1>Profile Screen</h1>
@@ -60,7 +66,7 @@ function ProfileScreen() {
       <button
         onClick={() => {
           dispatch(logoutThunk());
-          navigate("/login");
+          navigate("tuiter/login");
         }}
       >
         {" "}
