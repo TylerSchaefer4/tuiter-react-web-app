@@ -12,6 +12,7 @@ import {
   faClipboardList,
   faUser,
   faEllipsisH,
+  faSignIn,
 } from "@fortawesome/free-solid-svg-icons";
 const NavigationSidebar = () => {
   const { currentUser } = useSelector((state) => state.user);
@@ -27,11 +28,22 @@ const NavigationSidebar = () => {
     { name: "lists", icon: faClipboardList, currentUser: currentUser },
     { name: "profile", icon: faUser, currentUser: currentUser },
     { name: "more", icon: faEllipsisH, currentUser: currentUser },
+    { name: "login", icon: faSignIn, currentUser: !currentUser },
+    { name: "register", icon: faSignIn, currentUser: !currentUser },
   ];
   return (
     <div>
       {currentUser === undefined || currentUser === null ? (
-        <h1> Please login before you continue! </h1>
+        <div>
+          <h1> Please login before you continue! </h1>
+          <Link className="list-group" to="/tuiter/login">
+            {" "}
+            Login{" "}
+          </Link>
+          <Link className="list-group" to="/tuiter/register">
+            Register
+          </Link>
+        </div>
       ) : (
         <div className="list-group">
           {links.map((link) => (
