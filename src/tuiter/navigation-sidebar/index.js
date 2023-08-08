@@ -19,9 +19,6 @@ const NavigationSidebar = () => {
 
   const { pathname } = useLocation();
   const [ignore, tuiter, active] = pathname.split("/");
-  if (active === undefined) {
-    active = "login";
-  }
   const links = [
     { name: "home", icon: faHome, currentUser: currentUser },
     { name: "explore", icon: faCompass, currentUser: currentUser },
