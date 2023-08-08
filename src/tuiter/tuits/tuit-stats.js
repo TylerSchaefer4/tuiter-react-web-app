@@ -6,6 +6,7 @@ import {
   FaShareSquare,
   FaThumbsDown,
 } from "react-icons/fa";
+import { AiFillHeart, AiOutlineHeart, AiFillDislike } from "react-icons/ai";
 import { updateTuitThunk } from "../services/tuits-thunks";
 import { useDispatch } from "react-redux";
 
@@ -18,6 +19,21 @@ const TuitStats = ({ tuit }) => {
   const likes = tuit.likes || 0;
   const dislikes = tuit.dislikes || 0;
   const shares = tuit.shares || 0;
+  let likeIcon = null;
+  if (tuit.liked) {
+    likeIcon = <AiFillHeart color={"red"} />;
+  } else {
+    likeIcon = <AiOutlineHeart />;
+  }
+
+  let dislikeIcon = null;
+  if (tuit.disliked === undefined) {
+    dislikeIcon = <AiFillDislike />;
+  } else if (tuit.disliked) {
+    dislikeIcon = <AiFillDislike fill="#0D6EFD" />;
+  } else {
+    dislikeIcon = <AiFillDislike />;
+  }
 
   return (
     <div className="wd-tuit-stats">
@@ -28,22 +44,32 @@ const TuitStats = ({ tuit }) => {
         <FaRetweet /> {retuits}
       </div>
       <div className="wd-tuit-stat">
-        <FaHeart
-          className="text-danger"
+        <div
+          className=""
           onClick={() =>
-            dispatch(updateTuitThunk({ ...tuit, likes: likes + 1 }))
+            dispatch(
+              updateTuitThunk({ ...tuit, likes: tuit.likes + 1, liked: true })
+            )
           }
-        />
-        <span className="ms-2">{likes}</span>
+        >
+          {likeIcon} <span className="ms-2">{likes}</span>
+        </div>
       </div>
       <div className="wd-tuit-stat">
-        <FaThumbsDown
-          className="text-danger"
+        <div
+          className=""
           onClick={() =>
-            dispatch(updateTuitThunk({ ...tuit, dislikes: dislikes + 1 }))
+            dispatch(
+              updateTuitThunk({
+                ...tuit,
+                dislikes: tuit.dislikes ? tuit.dislikes + 1 : 1,
+                disliked: true,
+              })
+            )
           }
-        />
-        <span className="ms-2">{dislikes}</span>
+        >
+          {dislikeIcon} <span className="ms-2">{dislikes}</span>
+        </div>
       </div>
       <div className="wd-tuit-stat">
         <FaShareSquare /> {shares}
