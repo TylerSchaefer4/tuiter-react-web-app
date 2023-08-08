@@ -23,12 +23,15 @@ const TuitItem = ({
   const deleteTuitHandler = (id) => {
     dispatch(deleteTuitThunk(id));
   };
+
   console.log("tuit-item", tuit);
   const handleLike = () => {
     setLiked(!liked);
     setLikes(liked ? likes - 1 : likes + 1);
   };
-  const imageUrl = require(`./images/${tuit.image}`);
+  const imageUrl = tuit.image
+    ? require(`./images/${tuit.image}`)
+    : "teslaLogo.png";
   // console.log(imageUrl);
   return (
     <div className="wd-tuit">
