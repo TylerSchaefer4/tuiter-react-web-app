@@ -1,8 +1,11 @@
 import React from "react";
 import WhatsHappening from "../whats-happening";
 import TuitsList from "../tuits/tuits-list";
+import { useSelector } from "react-redux";
 
 const HomeScreen = () => {
+  const { currentUser } = useSelector((state) => state.user);
+
   return (
     <div>
       {currentUser === undefined || currentUser === null ? (
