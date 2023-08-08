@@ -13,6 +13,7 @@ const TuitItem = ({
     time: "2h",
     title: `Tesla CyberTruck lands on Mars and
                picks up the Curiosity rover on its 6' bed`,
+    replies: 100,
     image: "teslaLogo.png",
   },
 }) => {
@@ -54,10 +55,12 @@ const TuitItem = ({
             <div>
               <span className="wd-tuit-header-description">{tuit.tuit}</span>
             </div>
-            <TuitStats
-              stats={{ ...tuit, likes, liked }}
-              handleLike={handleLike}
-            />
+            {tuit && (
+              <TuitStats
+                stats={{ ...tuit, likes, liked }}
+                handleLike={handleLike}
+              />
+            )}
           </div>
         </div>
         <div className="">

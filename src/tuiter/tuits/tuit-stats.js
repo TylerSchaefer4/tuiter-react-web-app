@@ -11,11 +11,12 @@ import { useDispatch } from "react-redux";
 
 const TuitStats = ({ tuit, handleLike }) => {
   const dispatch = useDispatch();
+  const replies = tuit.replies || 0;
 
   return (
     <div className="wd-tuit-stats">
       <div className="wd-tuit-stat">
-        <FaComment /> {tuit.replies}
+        <FaComment /> {replies}
       </div>
       <div className="wd-tuit-stat">
         <FaRetweet /> {tuit.retuits}
