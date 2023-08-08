@@ -54,6 +54,7 @@ body {
     display: flex;
     justify-content: left;
     max-width: 100%;
+    width: 100%;
     /* width: 500px; */
     
   }
@@ -135,6 +136,7 @@ font-size: medium;
     padding-top: 8px;
     display: flex;
     justify-content: space-between;
+    width: 100%;
   }
   
   .wd-tuit-stat {

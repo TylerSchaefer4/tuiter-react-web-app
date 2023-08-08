@@ -6,6 +6,8 @@ console.log("USERS URL: ", USERS_URL);
 const api = axios.create({ withCredentials: true });
 
 export const login = async ({ username, password }) => {
+  console.log("Login service");
+  console.log(username, password);
   const response = await api.post(`${USERS_URL}/login`, { username, password });
   console.log("Successful login");
   console.log(response.data);

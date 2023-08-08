@@ -9,8 +9,11 @@ function LoginScreen() {
   const dispatch = useDispatch();
   const handleLogin = async () => {
     try {
+      console.log("username: ", username);
+      console.log("Starting to log in");
       await dispatch(loginThunk({ username, password }));
       navigate("tuiter/profile");
+      console.log("logged in");
     } catch (e) {
       alert(e);
     }

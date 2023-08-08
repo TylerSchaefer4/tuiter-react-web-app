@@ -4,6 +4,8 @@ import * as authService from "./auth-service";
 export const loginThunk = createAsyncThunk(
   "user/login",
   async (credentials) => {
+    console.log("credentials", credentials);
+    console.log("Pre loginthunk attepmt");
     const user = await authService.login(credentials);
     console.log(user);
     return user;
