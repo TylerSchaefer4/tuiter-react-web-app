@@ -15,7 +15,7 @@ const TuitItem = ({
     title: `Tesla CyberTruck lands on Mars and
                picks up the Curiosity rover on its 6' bed`,
     replies: 100,
-    image: "tesla-logo.png",
+    image: teslaLogo,
   },
 }) => {
   const [liked, setLiked] = useState(false);
@@ -30,9 +30,7 @@ const TuitItem = ({
     setLiked(!liked);
     setLikes(liked ? likes - 1 : likes + 1);
   };
-  const imageUrl = tuit.image
-    ? require(`./images/${tuit.image}`)
-    : "tesla-logo.png";
+  const imageUrl = tuit.image ? require(`./images/${tuit.image}`) : teslaLogo;
   // console.log(imageUrl);
   return (
     <div className="wd-tuit">

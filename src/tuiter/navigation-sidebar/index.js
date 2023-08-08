@@ -19,6 +19,9 @@ const NavigationSidebar = () => {
 
   const { pathname } = useLocation();
   const [ignore, tuiter, active] = pathname.split("/");
+  if (active === undefined) {
+    active = "login";
+  }
   const links = [
     { name: "home", icon: faHome, currentUser: currentUser },
     { name: "explore", icon: faCompass, currentUser: currentUser },
@@ -35,7 +38,7 @@ const NavigationSidebar = () => {
     <div>
       {currentUser === undefined || currentUser === null ? (
         <div>
-          <h1> Please login before you continue! </h1>
+          <p> Please login before you continue! </p>
           <Link className="list-group" to="/tuiter/login">
             {" "}
             Login{" "}
