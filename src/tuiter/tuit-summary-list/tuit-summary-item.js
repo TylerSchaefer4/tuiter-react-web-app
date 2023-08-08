@@ -11,7 +11,7 @@ const TuitSummaryItem = ({
     image: teslaLogo,
   },
 }) => {
-  const imageUrl = require(`./images/${tuit.image}`);
+  const imageUrl = tuit.image ? require(`./images/${tuit.image}`) : teslaLogo;
   //   console.log(imageUrl);
   return (
     <li className="list-group-item">
