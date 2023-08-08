@@ -5,6 +5,7 @@ import { AiOutlineSearch } from "react-icons/ai";
 import { GoGear } from "react-icons/go";
 import "./index.css";
 import starship from "./starship.jpeg";
+import { useSelector } from "react-redux";
 function ExploreScreen() {
   const { currentUser } = useSelector((state) => state.user);
   console.log(currentUser);
