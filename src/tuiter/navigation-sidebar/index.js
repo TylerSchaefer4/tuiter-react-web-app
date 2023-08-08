@@ -29,35 +29,44 @@ const NavigationSidebar = () => {
     { name: "more", icon: faEllipsisH, currentUser: currentUser },
   ];
   return (
-    <div className="list-group">
-      {links.map((link) => (
-        <Link
-          to={`/tuiter/${link.name}`}
-          className={`list-group-item text-capitalize pl-2 ${
-            active === link.name ? "active" : ""
-          }`}
-        >
-          <FontAwesomeIcon icon={link.icon} style={{ marginRight: "10px" }} />
-          <span className="d-none d-xl-inline-block">{link.name}</span>
-          {/* {link.name} */}
-        </Link>
-      ))}
-      {!currentUser && (
-        <Link className="list-group" to="/tuiter/login">
-          {" "}
-          Login{" "}
-        </Link>
-      )}
-      {!currentUser && (
-        <Link className="list-group" to="/tuiter/register">
-          Register
-        </Link>
-      )}
-      {currentUser && (
-        <Link className="list-group" to="/tuiter/profile">
-          {" "}
-          Profile{" "}
-        </Link>
+    <div>
+      {currentUser === undefined || currentUser === null ? (
+        <h1> Please login before you continue! </h1>
+      ) : (
+        <div className="list-group">
+          {links.map((link) => (
+            <Link
+              to={`/tuiter/${link.name}`}
+              className={`list-group-item text-capitalize pl-2 ${
+                active === link.name ? "active" : ""
+              }`}
+            >
+              <FontAwesomeIcon
+                icon={link.icon}
+                style={{ marginRight: "10px" }}
+              />
+              <span className="d-none d-xl-inline-block">{link.name}</span>
+              {/* {link.name} */}
+            </Link>
+          ))}
+          {!currentUser && (
+            <Link className="list-group" to="/tuiter/login">
+              {" "}
+              Login{" "}
+            </Link>
+          )}
+          {!currentUser && (
+            <Link className="list-group" to="/tuiter/register">
+              Register
+            </Link>
+          )}
+          {currentUser && (
+            <Link className="list-group" to="/tuiter/profile">
+              {" "}
+              Profile{" "}
+            </Link>
+          )}
+        </div>
       )}
     </div>
   );
