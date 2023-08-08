@@ -14,19 +14,19 @@ import {
   faEllipsisH,
 } from "@fortawesome/free-solid-svg-icons";
 const NavigationSidebar = () => {
-  const { currentUser } = useSelector((state) => state.auth);
+  const { currentUser } = useSelector((state) => state.user);
 
   const { pathname } = useLocation();
   const [ignore, tuiter, active] = pathname.split("/");
   const links = [
-    { name: "home", icon: faHome },
-    { name: "explore", icon: faCompass },
-    { name: "notifications", icon: faBell },
-    { name: "messages", icon: faEnvelope },
-    { name: "bookmarks", icon: faBookmark },
-    { name: "lists", icon: faClipboardList },
-    { name: "profile", icon: faUser },
-    { name: "more", icon: faEllipsisH },
+    { name: "home", icon: faHome, currentUser: currentUser },
+    { name: "explore", icon: faCompass, currentUser: currentUser },
+    { name: "notifications", icon: faBell, currentUser: currentUser },
+    { name: "messages", icon: faEnvelope, currentUser: currentUser },
+    { name: "bookmarks", icon: faBookmark, currentUser: currentUser },
+    { name: "lists", icon: faClipboardList, currentUser: currentUser },
+    { name: "profile", icon: faUser, currentUser: currentUser },
+    { name: "more", icon: faEllipsisH, currentUser: currentUser },
   ];
   return (
     <div className="list-group">
