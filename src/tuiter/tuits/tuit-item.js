@@ -55,12 +55,7 @@ const TuitItem = ({
             <div>
               <span className="wd-tuit-header-description">{tuit.tuit}</span>
             </div>
-            {tuit && (
-              <TuitStats
-                stats={{ ...tuit, likes, liked }}
-                handleLike={handleLike}
-              />
-            )}
+            {tuit && <TuitStats tuit={tuit} />}
           </div>
         </div>
         <div className="">

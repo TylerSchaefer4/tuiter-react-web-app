@@ -9,7 +9,7 @@ import {
 import { updateTuitThunk } from "../services/tuits-thunks";
 import { useDispatch } from "react-redux";
 
-const TuitStats = ({ tuit, handleLike }) => {
+const TuitStats = ({ tuit }) => {
   const dispatch = useDispatch();
   console.log("Tuit: ", tuit);
 
