@@ -18,13 +18,14 @@ function ProfileScreen() {
   const save = async () => {
     await dispatch(updateUserThunk(profile));
   };
-  useEffect(async () => {
+  useEffect(() => {
     const loadProfile = async () => {
       const { payload } = await dispatch(profileThunk());
       setProfile(payload);
     };
+
     loadProfile();
-  }, []);
+  }, [dispatch]);
   return (
     <div>
       <h1>Profile Screen</h1>
