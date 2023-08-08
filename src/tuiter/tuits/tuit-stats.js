@@ -11,36 +11,42 @@ import { useDispatch } from "react-redux";
 
 const TuitStats = ({ tuit }) => {
   const dispatch = useDispatch();
-  console.log("Tuit: ", tuit);
+
+  // Default values
+  const replies = tuit.replies || 0;
+  const retuits = tuit.retuits || 0;
+  const likes = tuit.likes || 0;
+  const dislikes = tuit.dislikes || 0;
+  const shares = tuit.shares || 0;
 
   return (
     <div className="wd-tuit-stats">
       <div className="wd-tuit-stat">
-        <FaComment /> {tuit.replies}
+        <FaComment /> {replies}
       </div>
       <div className="wd-tuit-stat">
-        <FaRetweet /> {tuit.retuits}
+        <FaRetweet /> {retuits}
       </div>
       <div className="wd-tuit-stat">
         <FaHeart
           className="text-danger"
           onClick={() =>
-            dispatch(updateTuitThunk({ ...tuit, likes: tuit.likes + 1 }))
+            dispatch(updateTuitThunk({ ...tuit, likes: likes + 1 }))
           }
         />
-        <span className="ms-2">{tuit.likes}</span>
+        <span className="ms-2">{likes}</span>
       </div>
       <div className="wd-tuit-stat">
         <FaThumbsDown
           className="text-danger"
           onClick={() =>
-            dispatch(updateTuitThunk({ ...tuit, dislikes: tuit.dislikes + 1 }))
+            dispatch(updateTuitThunk({ ...tuit, dislikes: dislikes + 1 }))
           }
         />
-        <span className="ms-2">{tuit.dislikes}</span>
+        <span className="ms-2">{dislikes}</span>
       </div>
       <div className="wd-tuit-stat">
-        <FaShareSquare /> {tuit.shares}
+        <FaShareSquare /> {shares}
       </div>
     </div>
   );
