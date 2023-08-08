@@ -14,7 +14,7 @@ import {
   faEllipsisH,
 } from "@fortawesome/free-solid-svg-icons";
 const NavigationSidebar = () => {
-  // const { currentUser } = useSelector((state) => state.user);
+  const { currentUser } = useSelector((state) => state.user);
 
   const { pathname } = useLocation();
   const [ignore, tuiter, active] = pathname.split("/");
