@@ -23,7 +23,7 @@ const TuitItem = ({
   const deleteTuitHandler = (id) => {
     dispatch(deleteTuitThunk(id));
   };
-
+  console.log("tuit-item", tuit);
   const handleLike = () => {
     setLiked(!liked);
     setLikes(liked ? likes - 1 : likes + 1);
