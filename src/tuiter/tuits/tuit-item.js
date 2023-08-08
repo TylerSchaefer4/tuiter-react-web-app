@@ -5,6 +5,7 @@ import blueCheck from "./blueCheck.png";
 import "./index.css";
 import { useDispatch } from "react-redux";
 import { deleteTuitThunk } from "../services/tuits-thunks";
+import teslaLogo from "./images/teslaLogo.png";
 
 const TuitItem = ({
   tuit = {
@@ -31,7 +32,7 @@ const TuitItem = ({
   };
   const imageUrl = tuit.image
     ? require(`./images/${tuit.image}`)
-    : "teslaLogo.png";
+    : "tesla-logo.png";
   // console.log(imageUrl);
   return (
     <div className="wd-tuit">
