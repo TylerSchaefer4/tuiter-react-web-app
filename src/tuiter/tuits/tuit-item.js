@@ -6,6 +6,7 @@ import "./index.css";
 import { useDispatch } from "react-redux";
 import { deleteTuitThunk } from "../services/tuits-thunks";
 import teslaLogo from "./images/tesla-logo.png";
+import { useSelector } from "react-redux";
 
 const TuitItem = ({
   tuit = {
@@ -24,6 +25,7 @@ const TuitItem = ({
   const deleteTuitHandler = (id) => {
     dispatch(deleteTuitThunk(id));
   };
+  const { currentUser } = useSelector((state) => state.user);
 
   console.log("tuit-item", tuit);
   const handleLike = () => {
@@ -41,7 +43,9 @@ const TuitItem = ({
           </div>
           <div className="wd-tuit-header">
             <div>
-              <span className="wd-tuit-author">{tuit.userName} </span>
+              <span className="wd-tuit-author">
+                {tuit.username || currentUser.username}{" "}
+              </span>
               <span className="wd-blue-check">
                 <img
                   src={blueCheck}
@@ -52,7 +56,7 @@ const TuitItem = ({
 
               <span className="wd-tuit-handle"> {tuit.handle}</span>
 
-              <span className="wd-tuit-date">- {tuit.time}</span>
+              <span className="wd-tuit-date"> - {tuit.time || "1h"}</span>
             </div>
             <div>
               <span className="wd-tuit-header-description">{tuit.tuit}</span>
