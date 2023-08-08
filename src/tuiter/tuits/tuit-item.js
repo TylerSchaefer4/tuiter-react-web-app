@@ -5,7 +5,7 @@ import blueCheck from "./blueCheck.png";
 import "./index.css";
 import { useDispatch } from "react-redux";
 import { deleteTuitThunk } from "../services/tuits-thunks";
-import teslaLogo from "./images/teslaLogo.png";
+import teslaLogo from "./images/tesla-logo.png";
 
 const TuitItem = ({
   tuit = {
@@ -15,7 +15,7 @@ const TuitItem = ({
     title: `Tesla CyberTruck lands on Mars and
                picks up the Curiosity rover on its 6' bed`,
     replies: 100,
-    image: "teslaLogo.png",
+    image: "tesla-logo.png",
   },
 }) => {
   const [liked, setLiked] = useState(false);
