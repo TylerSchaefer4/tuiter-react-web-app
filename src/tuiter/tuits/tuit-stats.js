@@ -16,7 +16,7 @@ const TuitStats = ({ tuit, handleLike }) => {
   return (
     <div className="wd-tuit-stats">
       <div className="wd-tuit-stat">
-        <FaComment /> {replies}
+        <FaComment /> {tuit.replies}
       </div>
       <div className="wd-tuit-stat">
         <FaRetweet /> {tuit.retuits}
