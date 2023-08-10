@@ -12,7 +12,7 @@ function LoginScreen() {
       console.log("username: ", username);
       console.log("Starting to log in");
       await dispatch(loginThunk({ username, password }));
-      navigate("tuiter/profile");
+      navigate("profile");
       console.log("logged in");
     } catch (e) {
       alert(e);

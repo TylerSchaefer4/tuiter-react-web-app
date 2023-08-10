@@ -19,21 +19,38 @@ const TuitStats = ({ tuit }) => {
   const likes = tuit.likes || 0;
   const dislikes = tuit.dislikes || 0;
   const shares = tuit.shares || 0;
-  let likeIcon = null;
-  if (tuit.liked) {
-    likeIcon = <AiFillHeart color={"red"} />;
-  } else {
-    likeIcon = <AiOutlineHeart />;
-  }
 
-  let dislikeIcon = null;
-  if (tuit.disliked === undefined) {
-    dislikeIcon = <AiFillDislike />;
-  } else if (tuit.disliked) {
-    dislikeIcon = <AiFillDislike fill="#0D6EFD" />;
-  } else {
-    dislikeIcon = <AiFillDislike />;
-  }
+  const [liked, setLiked] = useState(tuit.liked);
+  const [disliked, setDisliked] = useState(tuit.disliked);
+  const [likesCount, setLikesCount] = useState(tuit.likes || 0);
+  const [dislikesCount, setDislikesCount] = useState(tuit.dislikes || 0);
+  const handleLike = () => {
+    let newLikes = liked ? likesCount - 1 : likesCount + 1;
+    setLiked(!liked);
+    setLikesCount(newLikes);
+    dispatch(updateTuitThunk({ ...tuit, likes: newLikes, liked: !liked }));
+  };
+
+  const handleDislike = () => {
+    let newDislikes = disliked ? dislikesCount - 1 : dislikesCount + 1;
+    setDisliked(!disliked);
+    setDislikesCount(newDislikes);
+    dispatch(
+      updateTuitThunk({ ...tuit, dislikes: newDislikes, disliked: !disliked })
+    );
+  };
+
+  const likeIcon = tuit.liked ? (
+    <AiFillHeart color={"red"} />
+  ) : (
+    <AiOutlineHeart />
+  );
+
+  const dislikeIcon = tuit.disliked ? (
+    <AiFillDislike fill="#0D6EFD" />
+  ) : (
+    <AiFillDislike />
+  );
 
   return (
     <div className="wd-tuit-stats">
@@ -44,31 +61,15 @@ const TuitStats = ({ tuit }) => {
         <FaRetweet /> {retuits}
       </div>
       <div className="wd-tuit-stat">
-        <div
-          className=""
-          onClick={() =>
-            dispatch(
-              updateTuitThunk({ ...tuit, likes: tuit.likes + 1, liked: true })
-            )
-          }
-        >
-          {likeIcon} <span className="ms-2">{likes}</span>
+        <div onClick={handleLike}>
+          {liked ? <AiFillHeart color={"red"} /> : <AiOutlineHeart />}
+          <span className="ms-2">{likesCount}</span>
         </div>
       </div>
       <div className="wd-tuit-stat">
-        <div
-          className=""
-          onClick={() =>
-            dispatch(
-              updateTuitThunk({
-                ...tuit,
-                dislikes: tuit.dislikes ? tuit.dislikes + 1 : 1,
-                disliked: true,
-              })
-            )
-          }
-        >
-          {dislikeIcon} <span className="ms-2">{dislikes}</span>
+        <div onClick={handleDislike}>
+          {disliked ? <AiFillDislike fill="#0D6EFD" /> : <AiFillDislike />}
+          <span className="ms-2">{dislikesCount}</span>
         </div>
       </div>
       <div className="wd-tuit-stat">
