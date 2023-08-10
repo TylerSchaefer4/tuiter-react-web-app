@@ -56,7 +56,7 @@ const TuitItem = ({
 
               <span className="wd-tuit-handle">
                 {" "}
-                {tuit.handle || currentUser.username}
+                {tuit.handle || "@" + currentUser.username}
               </span>
 
               <span className="wd-tuit-date"> - {tuit.time || "1h"}</span>

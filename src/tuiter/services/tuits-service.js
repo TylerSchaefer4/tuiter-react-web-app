@@ -1,11 +1,16 @@
 import axios from "axios";
+import { useSelector } from "react-redux";
 const API_BASE = process.env.REACT_APP_SERVER_API_URL;
 const TUITS_API = `${API_BASE}/tuits`;
 console.log("TUITS API: ", TUITS_API);
+
 // const TUITS_API = "https://tuiter-node-server-app-nweg.onrender.com/api/tuits";
 // const TUITS_API = "http://localhost:4000/api/tuits";
+const { currentUser } = useSelector((state) => state.user);
 
 export const createTuit = async (tuit) => {
+  tuit.handle = tuit.handle || currentUser.username;
+  tuit.username = tuit.username || currentUser.firstName;
   const response = await axios.post(TUITS_API, tuit);
   return response.data;
 };
