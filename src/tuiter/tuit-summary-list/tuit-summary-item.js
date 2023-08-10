@@ -25,13 +25,8 @@ const TuitSummaryItem = ({
           <div className="fw-bolder">{tuit.topic || "Newest Tuits"}</div>
           <div>{tuit.tuit}</div>
         </div>
-        <div className="col-2">
-          <img
-            width={70}
-            className="float-end rounded-3"
-            src={imageUrl}
-            alt="hmm"
-          />
+        <div className="col-2 d-flex align-items-center">
+          <img width={70} className="rounded-3" src={imageUrl} alt="hmm" />
         </div>
       </div>
     </li>

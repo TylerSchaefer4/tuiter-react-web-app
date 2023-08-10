@@ -13,6 +13,7 @@ import {
   faUser,
   faEllipsisH,
   faSignIn,
+  faRegistered,
 } from "@fortawesome/free-solid-svg-icons";
 const NavigationSidebar = () => {
   const { currentUser } = useSelector((state) => state.user);
@@ -29,7 +30,7 @@ const NavigationSidebar = () => {
     { name: "profile", icon: faUser, currentUser: currentUser },
     { name: "more", icon: faEllipsisH, currentUser: currentUser },
     { name: "login", icon: faSignIn, currentUser: !currentUser },
-    { name: "register", icon: faSignIn, currentUser: !currentUser },
+    { name: "register", icon: faRegistered, currentUser: !currentUser },
   ];
   return (
     <div>
@@ -46,21 +47,27 @@ const NavigationSidebar = () => {
         </div>
       ) : (
         <div className="list-group">
-          {links.map((link) => (
-            <Link
-              to={`/tuiter/${link.name}`}
-              className={`list-group-item text-capitalize pl-2 ${
-                active === link.name ? "active" : ""
-              }`}
-            >
-              <FontAwesomeIcon
-                icon={link.icon}
-                style={{ marginRight: "10px" }}
-              />
-              <span className="d-none d-xl-inline-block">{link.name}</span>
-              {/* {link.name} */}
-            </Link>
-          ))}
+          {links
+            .filter((link) =>
+              link.currentUser === undefined
+                ? true
+                : link.currentUser === !!currentUser
+            )
+            .map((link) => (
+              <Link
+                key={link.name}
+                to={`/tuiter/${link.name}`}
+                className={`list-group-item text-capitalize pl-2 ${
+                  active === link.name ? "active" : ""
+                }`}
+              >
+                <FontAwesomeIcon
+                  icon={link.icon}
+                  style={{ marginRight: "10px" }}
+                />
+                <span className="d-none d-xl-inline-block">{link.name}</span>
+              </Link>
+            ))}
           {!currentUser && (
             <Link className="list-group" to="/tuiter/login">
               {" "}

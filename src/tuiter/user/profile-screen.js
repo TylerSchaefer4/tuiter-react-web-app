@@ -34,7 +34,7 @@ function ProfileScreen() {
       {profile && (
         <div>
           <div>
-            <label>First Name</label>
+            <label className="mr-2">First Name</label>
             <input
               type="text"
               value={profile.firstName}
@@ -47,8 +47,8 @@ function ProfileScreen() {
               }}
             />
           </div>
-          <div>
-            <label>Last Name</label>
+          <div className="mb-2">
+            <label className="mr-2">Last Name</label>
             <input
               type="text"
               value={profile.lastName}
@@ -64,9 +64,10 @@ function ProfileScreen() {
         </div>
       )}
       <button
+        className="mr-2"
         onClick={() => {
           dispatch(logoutThunk());
-          navigate("/login");
+          navigate("/tuiter/login");
         }}
       >
         {" "}
