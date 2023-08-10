@@ -6,9 +6,9 @@ console.log("TUITS API: ", TUITS_API);
 
 // const TUITS_API = "https://tuiter-node-server-app-nweg.onrender.com/api/tuits";
 // const TUITS_API = "http://localhost:4000/api/tuits";
-const { currentUser } = useSelector((state) => state.user);
 
 export const createTuit = async (tuit) => {
+  const { currentUser } = useSelector((state) => state.user);
   tuit.handle = tuit.handle || currentUser.username;
   tuit.username = tuit.username || currentUser.firstName;
   const response = await axios.post(TUITS_API, tuit);

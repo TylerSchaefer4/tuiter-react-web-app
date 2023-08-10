@@ -11,9 +11,16 @@ function LoginScreen() {
     try {
       console.log("username: ", username);
       console.log("Starting to log in");
-      await dispatch(loginThunk({ username, password }));
-      navigate("profile");
-      console.log("logged in");
+      const result = await dispatch(loginThunk({ username, password }));
+
+      if (result) {
+        // check if result is truthy (not null, undefined, etc.)
+        navigate("profile");
+        console.log("logged in");
+      } else {
+        console.error("Login failed. No user returned.");
+        alert("Login failed. Please check your credentials.");
+      }
     } catch (e) {
       alert(e);
     }
