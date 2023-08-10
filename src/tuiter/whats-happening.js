@@ -19,7 +19,9 @@ const WhatsHappening = () => {
     const newTuit = {
       tuit: whatsHappening,
     };
-    dispatch(createTuitThunk(newTuit, currentUser));
+    newTuit.handle = currentUser.username;
+    newTuit.username = currentUser.firstName;
+    dispatch(createTuitThunk(newTuit));
     setWhatsHappening("");
     console.log(whatsHappening);
   };
