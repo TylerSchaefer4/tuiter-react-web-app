@@ -44,7 +44,7 @@ const TuitItem = ({
           <div className="wd-tuit-header">
             <div>
               <span className="wd-tuit-author">
-                {tuit.username || currentUser.username}{" "}
+                {tuit.username || currentUser.firstName}{" "}
               </span>
               <span className="wd-blue-check">
                 <img
@@ -54,7 +54,10 @@ const TuitItem = ({
                 />
               </span>
 
-              <span className="wd-tuit-handle"> {tuit.handle}</span>
+              <span className="wd-tuit-handle">
+                {" "}
+                {tuit.handle || currentUser.username}
+              </span>
 
               <span className="wd-tuit-date"> - {tuit.time || "1h"}</span>
             </div>

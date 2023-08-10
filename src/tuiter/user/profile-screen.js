@@ -37,6 +37,7 @@ function ProfileScreen() {
             <label className="mr-2">First Name</label>
             <input
               type="text"
+              className="ml-2"
               value={profile.firstName}
               onChange={(event) => {
                 const newProfile = {
@@ -47,10 +48,11 @@ function ProfileScreen() {
               }}
             />
           </div>
-          <div className="mb-2">
+          <div className="mb-2 mt-2">
             <label className="mr-2">Last Name</label>
             <input
               type="text"
+              className="ml-2"
               value={profile.lastName}
               onChange={(event) => {
                 const newProfile = {
