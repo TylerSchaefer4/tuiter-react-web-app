@@ -4,7 +4,9 @@ import { FaEllipsisH } from "react-icons/fa";
 import blueCheck from "./blueCheck.png";
 import "./index.css";
 import { useDispatch } from "react-redux";
-import { deleteTuit } from "./hmm";
+import { deleteTuitThunk } from "../services/tuits-thunks";
+import teslaLogo from "./images/tesla-logo.png";
+import { useSelector } from "react-redux";
 
 const TuitItem = ({
   tuit = {
@@ -13,21 +15,24 @@ const TuitItem = ({
     time: "2h",
     title: `Tesla CyberTruck lands on Mars and
                picks up the Curiosity rover on its 6' bed`,
-    image: "teslaLogo.png",
+    replies: 100,
+    image: teslaLogo,
   },
 }) => {
   const [liked, setLiked] = useState(false);
   const [likes, setLikes] = useState(tuit.likes);
   const dispatch = useDispatch();
   const deleteTuitHandler = (id) => {
-    dispatch(deleteTuit(id));
+    dispatch(deleteTuitThunk(id));
   };
+  const { currentUser } = useSelector((state) => state.user);
 
+  console.log("tuit-item", tuit);
   const handleLike = () => {
     setLiked(!liked);
     setLikes(liked ? likes - 1 : likes + 1);
   };
-  const imageUrl = require(`./images/${tuit.image}`);
+  const imageUrl = tuit.image ? require(`./images/${tuit.image}`) : teslaLogo;
   // console.log(imageUrl);
   return (
     <div className="wd-tuit">
@@ -38,7 +43,9 @@ const TuitItem = ({
           </div>
           <div className="wd-tuit-header">
             <div>
-              <span className="wd-tuit-author">{tuit.userName} </span>
+              <span className="wd-tuit-author">
+                {tuit.username || currentUser.firstName}{" "}
+              </span>
               <span className="wd-blue-check">
                 <img
                   src={blueCheck}
@@ -47,17 +54,17 @@ const TuitItem = ({
                 />
               </span>
 
-              <span className="wd-tuit-handle"> {tuit.handle}</span>
+              <span className="wd-tuit-handle">
+                {" "}
+                {tuit.handle || "@" + currentUser.username}
+              </span>
 
-              <span className="wd-tuit-date">- {tuit.time}</span>
+              <span className="wd-tuit-date"> - {tuit.time || "1h"}</span>
             </div>
             <div>
               <span className="wd-tuit-header-description">{tuit.tuit}</span>
             </div>
-            <TuitStats
-              stats={{ ...tuit, likes, liked }}
-              handleLike={handleLike}
-            />
+            {tuit && <TuitStats tuit={tuit} />}
           </div>
         </div>
         <div className="">

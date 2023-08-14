@@ -11,7 +11,8 @@ function ExploreScreen() {
           time: "4d",
           title:
             "Tesla FSD finally makes driving obsolete. After years of delay, Tesla Full Self Driving can drive you to work while you work, play, or sleep",
-          image: javaLogo,
+          // image: javaLogo,
+          image: "java-logo.png",
         }}
       />
       <TuitSummaryItem />
@@ -22,7 +23,8 @@ function ExploreScreen() {
           time: "4d",
           title:
             "Tesla FSD finally makes driving obsolete. After years of delay, Tesla Full Self Driving can drive you to work while you work, play, or sleep",
-          image: javaLogo,
+          // image: javaLogo,
+          image: "java-logo.png",
         }}
       />
     </div>

@@ -1,5 +1,6 @@
 import React from "react";
 import teslaLogo from "./images/tesla-logo.png";
+import { useSelector } from "react-redux";
 
 const TuitSummaryItem = ({
   tuit = {
@@ -11,25 +12,21 @@ const TuitSummaryItem = ({
     image: teslaLogo,
   },
 }) => {
-  const imageUrl = require(`./images/${tuit.image}`);
+  const { currentUser } = useSelector((state) => state.user);
+  const imageUrl = tuit.image ? require(`./images/${tuit.image}`) : teslaLogo;
   //   console.log(imageUrl);
   return (
     <li className="list-group-item">
       <div className="row">
         <div className="col-10">
           <div>
-            {tuit.userName} . {tuit.time}
+            {tuit.username || currentUser.username} - {tuit.time || "2h"}
           </div>
-          <div className="fw-bolder">{tuit.topic}</div>
-          <div>{tuit.title}</div>
+          <div className="fw-bolder">{tuit.topic || "Newest Tuits"}</div>
+          <div>{tuit.tuit}</div>
         </div>
-        <div className="col-2">
-          <img
-            width={70}
-            className="float-end rounded-3"
-            src={imageUrl}
-            alt="hmm"
-          />
+        <div className="col-2 d-flex align-items-center">
+          <img width={70} className="rounded-3" src={imageUrl} alt="hmm" />
         </div>
       </div>
     </li>
