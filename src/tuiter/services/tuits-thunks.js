@@ -8,6 +8,7 @@ export const findTuitsThunk = createAsyncThunk(
 export const deleteTuitThunk = createAsyncThunk(
   "tuits/deleteTuit",
   async (tuitId) => {
+    console.log("TuitId: ", tuitId);
     await service.deleteTuit(tuitId);
     return tuitId;
   }

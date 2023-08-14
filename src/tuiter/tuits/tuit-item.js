@@ -23,6 +23,7 @@ const TuitItem = ({
   const [likes, setLikes] = useState(tuit.likes);
   const dispatch = useDispatch();
   const deleteTuitHandler = (id) => {
+    console.log("deleteTuitHandler", id);
     dispatch(deleteTuitThunk(id));
   };
   const { currentUser } = useSelector((state) => state.user);
