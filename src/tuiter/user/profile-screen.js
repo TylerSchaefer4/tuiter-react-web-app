@@ -15,7 +15,7 @@ function ProfileScreen() {
   const navigate = useNavigate();
   const save = async () => {
     console.log("Profile: ", profile);
-    await dispatch(updateUserThunk(newProfile));
+    await dispatch(updateUserThunk(profile));
   };
   useEffect(() => {
     dispatch(findTuitsThunk());
